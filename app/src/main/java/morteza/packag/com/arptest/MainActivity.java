@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,14 +31,18 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);
 
 
-        io.reactivex.Observable.just("Hey! How you doing?").subscribe(new Consumer<String>() {
-            @Override
-            public void accept(String s) throws Exception {
+//        io.reactivex.Observable.just("Hey! How you doing?").subscribe(new Consumer<String>() {
+//            @Override
+//            public void accept(String s) throws Exception {
+//
+//                txtHi.setText(s);
+//
+//            }
+//        });
 
-                txtHi.setText(s);
+        // TextView text lambda way
+        Observable.just("Hey! How are you?").subscribe(s -> txtHi.setText(s));
 
-            }
-        });
         adapter = new MyAdapter();
         myRecyClerView.setHasFixedSize(true);
         myRecyClerView.setAdapter(adapter);
@@ -55,16 +58,30 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+//        Observable.just(new Entry("iPhone X", BigDecimal.valueOf(1500), new Date()),
+//                new Entry("Nexus 5", BigDecimal.valueOf(1000), new Date()),
+//                new Entry("Galaxy Note 8", BigDecimal.valueOf(200), new Date())
+//
+//                ).subscribe(new Consumer<Entry>() {
+//            @Override
+//            public void accept(Entry entry) throws Exception {
+//                adapter.addEntry(entry);
+//            }
+//        });
+
+        // Lambda way
+
         Observable.just(new Entry("iPhone X", BigDecimal.valueOf(1500), new Date()),
                 new Entry("Nexus 5", BigDecimal.valueOf(1000), new Date()),
                 new Entry("Galaxy Note 8", BigDecimal.valueOf(200), new Date())
+                ).subscribe(adapter::addEntry);
 
-                ).subscribe(new Consumer<Entry>() {
-            @Override
-            public void accept(Entry entry) throws Exception {
-                adapter.addEntry(entry);
-            }
-        });
+
+
+        // Observable
+        Observable.just("Android", "iOS").subscribe();
+
+        
 
 
 

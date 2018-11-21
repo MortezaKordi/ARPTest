@@ -14,17 +14,20 @@
         android:id="@+id/txtEntryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:textColor="#0000ff"/>
     <TextView
         android:id="@+id/txtEntryPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:textColor="#ff0000"/>
     <TextView
         android:id="@+id/txtEntryDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:textColor="#00ff00"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
